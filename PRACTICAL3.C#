@@ -1,0 +1,100 @@
+ using System; 
+ 
+  namespace StudentClass 
+  { 
+   class Student 
+   { 
+     public int rollno; 
+     public string name; 
+     public int[] marks = new int[3]; 
+     public double percentage; 
+     public string grade; 
+ 
+     public void CalculatePercentage() 
+     { 
+       double totalMarks = 0; 
+       for (int i = 0; i < marks.Length; i++) 
+       { 
+          totalMarks += marks[i]; 
+       } 
+       percentage = totalMarks / marks.Length; 
+     } 
+ 
+     public void CalculateGrade() 
+     { 
+       if (percentage >= 90) 
+       { 
+         grade = "A+"; 
+       } 
+       else if (percentage >= 80 && percentage < 90) 
+       { 
+         grade = "A"; 
+       } 
+       else if (percentage >= 70 && percentage < 80) 
+       { 
+        grade = "B+"; 
+       } 
+       else if (percentage >= 60 && percentage < 70) 
+       { 
+         grade = "B"; 
+       } 
+       else if (percentage >= 50 && percentage < 60) 
+       { 
+         grade = "C+"; 
+       } 
+       else if (percentage >= 40 && percentage < 50) 
+       { 
+         grade = "C"; 
+       } 
+       else 
+       { 
+         grade = "Fail"; 
+       } 
+     } 
+   } 
+ 
+   public class Program 
+   { 
+     public static void Main(string[] args) 
+     { 
+       Console.WriteLine("Enter total number of students:"); 
+       int n = Convert.ToInt32(Console.ReadLine()); 
+ 
+       Student[] students = new Student[n]; 
+       int passedStudentsCount = 0; 
+ 
+       for (int i = 0; i < n; i++) 
+       { 
+         Console.WriteLine("Enter rollno of student {0}:", i + 1); 
+         int rollno = Convert.ToInt32(Console.ReadLine()); 
+         Console.WriteLine("Enter name of student {0}:", i + 1); 
+         string name = Console.ReadLine(); 
+         Console.WriteLine("Enter marks of three subjects for student 
+{0}:", i + 1); 
+         int[] marks = new int[3]; 
+         for (int j = 0; j < marks.Length; j++) 
+         { 
+           Console.WriteLine("Enter marks for subject {0}:", j + 1); 
+           marks[j] = Convert.ToInt32(Console.ReadLine()); 
+         } 
+ 
+         Student student = new Student(); 
+         student.rollno = rollno; 
+         student.name = name; 
+         student.marks = marks; 
+         student.CalculatePercentage(); 
+         student.CalculateGrade(); 
+ 
+         if (student.grade != "Fail") 
+         { 
+           passedStudentsCount++; 
+         } 
+ 
+         students[i] = student; 
+       } 
+ 
+       Console.WriteLine("Total students who have passed: {0}", 
+passedStudentsCount); 
+     } 
+   } 
+ }

@@ -1,0 +1,36 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Pra10.aspx.cs" 
+Inherits="_Default" Theme="Theme1"%> 
+<asp:Content ID="Content1"ContentPlaceHolderID="MainContent" 
+runat="server"> 
+<h1>Practical 10</h1> 
+<p> Develop an ASP.net web application to demonstrate page themes.</p> 
+</asp:Content> 
+// Style.css 
+body { 
+background-color: #cce6ff; 
+} 
+h1, h2, h3, h4, h5, h6 { 
+color: #004080; 
+} 
+p { 
+color: #000000; 
+} 
+//Pra10.aspx.cs 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Web; 
+using System.Web.UI; 
+using System.Web.UI.WebControls; 
+public partial class _Default : System.Web.UI.Page 
+{  
+void Page_PreInit(object sender, EventArgs e) 
+{ 
+        string ThemeName; 
+        ThemeName = Request.QueryString["Theme"]; 
+        if (ThemeName != null) 
+        { 
+            Page.Theme = ThemeName; 
+        } 
+    } 
+} 

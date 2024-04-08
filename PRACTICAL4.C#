@@ -1,0 +1,25 @@
+ using System; 
+ 
+  namespace Program 
+ { 
+   class Program4 
+   { 
+     static void Main(string[] args) 
+     { 
+       Person person = new Person(); 
+       person.Name = "Spce"; 
+       Console.WriteLine("Name: " + person.Name); 
+     } 
+   } 
+ 
+   class Person 
+   { 
+     private string name; 
+ 
+     public string Name 
+     { 
+       get { return name; } 
+       set { name = value; } 
+     } 
+   } 
+ }

@@ -1,0 +1,97 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pra11.aspx.cs" 
+Inherits="session._Default" %> 
+ 
+//Pra11.aspx 
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head runat="server"> 
+    <title></title> 
+</head> 
+<body> 
+    <form id="form1" runat="server"> 
+    <div> 
+     
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox> 
+     
+    </div> 
+    <p> 
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+Text="OK"  
+            Width="78px" /> 
+    </p> 
+    </form> 
+</body> 
+</html> 
+ 
+//Pra11.aspx.cs 
+ 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Web; 
+using System.Web.UI; 
+using System.Web.UI.WebControls; 
+ 
+namespace session 
+{ 
+    public partial class _Default : System.Web.UI.Page 
+    { 
+        protected void Page_Load(object sender, EventArgs e) 
+        { 
+ 
+        } 
+ 
+        protected void Button1_Click(object sender, EventArgs e) 
+        { 
+            Session["username"] = TextBox1.Text; 
+            Response.Redirect("WelcomePage.aspx");   
+        } 
+    } 
+} 
+ 
+//WelcomePage.aspx 
+ 
+<%@ Page Language="C#" AutoEventWireup="true" 
+CodeBehind="WelcomePage.aspx.cs" Inherits="session.WelcomePage" %> 
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head runat="server"> 
+    <title></title> 
+</head> 
+<body> 
+    <form id="form1" runat="server"> 
+    <div> 
+     
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label> 
+     
+    </div> 
+    </form> 
+</body> 
+</html> 
+ 
+//WelcomePage.aspx.cs 
+ 
+using System; 
+using System.Collections.Generic; 
+using System.Linq; 
+using System.Web; 
+using System.Web.UI; 
+using System.Web.UI.WebControls; 
+ 
+namespace session 
+{ 
+    public partial class WebForm1 : System.Web.UI.Page 
+    { 
+        protected void Page_Load(object sender, EventArgs e) 
+        { 
+            Label1.Text = "welcome To Spce WebPage" + 
+Session["username"].ToString(); 
+        } 
+    } 
+} 

@@ -1,0 +1,22 @@
+ using System; 
+ using System.IO; 
+ 
+ namespace Practical5 
+ { 
+   class Program 
+   { 
+     static void Main(string[] args) 
+     { 
+       string path = @"D:\DOT NET\Practical5\Test.txt"; 
+ 
+         using (StreamWriter outputFile = new StreamWriter(path)) 
+       { 
+         outputFile.WriteLine("Hello World!"); 
+       } 
+ 
+       string text = File.ReadAllText(path); 
+ 
+       Console.WriteLine("Contents of MyTest.txt = {0}", text); 
+     } 
+   } 
+ }
